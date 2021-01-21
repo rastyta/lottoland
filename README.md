@@ -31,6 +31,7 @@ It will be accessible at [http://localhost:9001/](http://localhost:9001/).
 mvn test
 ```
 
+
 ##Assumptions and Clarifications
 
 I have assumed that the second part (statistics) was not necessary to be updated on live, for that it will update asynchronously, so the user experience won't be penalized.
