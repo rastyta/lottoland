@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rock, Paper and Scissors</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" th:href="@{/img/lottoland.png}"/>
+  <meta http-equiv="refresh" content="10">
+</head>
+<body>
+<h1>Rock, Paper, Scissors Game</h1>
+<div class="content">
+  <div style="font-size: 20px; color:magenta; text-align: right;">
+    <a th:href="@{/}">( Play Game )</a>
+  </div>
+  <h2>Statistics: </h2>
+  <div style="margin-top:20px;">
+    <table align="center">
+      <tr>
+        <th>Total Rounds Played</th>
+        <th>Total Wins For First Players</th>
+        <th>Total Wins For Second Players</th>
+        <th>Total Draws</th>
+      </tr>
+      <tr>
+        <td><span th:text="${statistics.totalRoundsPlayed}"></span></td>
+        <td><span th:text="${statistics.totalWinsForFirstPlayers}"></span></td>
+        <td><span th:text="${statistics.totalWinsForSecondPlayers}"></span></td>
+        <td><span th:text="${statistics.totalDraws}"></span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

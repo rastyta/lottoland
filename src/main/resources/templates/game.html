@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rock, Paper, Scissors</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link th:href="@{/styles/main.css}" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" th:href="@{/img/lottoland.png}"/>
+</head>
+<body>
+<h1>Rock, Paper and Scissors Game</h1>
+<div class="content">
+  <div style="font-size: 20px; color:magenta; text-align: right;">
+    <a th:href="@{/statistics}">( Statistics )</a>
+  </div>
+  <div class="topDiv">
+      <a href="/play" th:href="@{/play}">
+        <button class="button buttonPlay">Play Round</button>
+      </a>
+      <a href="/clear" th:href="@{/clear}">
+        <button class="button buttonClear">Restart game</button>
+      </a>
+  </div>
+  <div class="countDiv">
+    <label style="font-size: 25px;">Number of rounds played:</label>
+    <span style="font-size: 25px; color:magenta;" th:text="${games.numberOfRounds}"></span>
+  </div>
+  <div style="margin-top:50px;">
+    <table align="center">
+      <thead>
+      <tr>
+        <th>1st player chose</th>
+        <th>2nd player chose</th>
+        <th>Result of the round</th>
+      </tr>
+      </thead>
+      <tr th:each="round : ${games.rounds}">
+        <td><span th:text="${round.player1Type}"></span></td>
+        <td><span th:text="${round.player2Type}"></span></td>
+        <td><span th:text="${round.result}"></span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>
