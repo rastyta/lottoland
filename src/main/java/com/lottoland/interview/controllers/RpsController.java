@@ -1,8 +1,12 @@
 package com.lottoland.interview.controllers;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import com.lottoland.interview.models.GameStatistics;
 import com.lottoland.interview.models.Games;
 import com.lottoland.interview.services.PlayService;
+import com.lottoland.interview.services.impl.GameStatisticsServiceImpl;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("games")
 public class RpsController {
+
+  private static final Logger LOGGER = getLogger(RpsController.class);
 
   @Autowired
   private PlayService playService;
@@ -37,6 +43,7 @@ public class RpsController {
    */
   @GetMapping("/")
   public String home(Model model, @ModelAttribute("games") Games games) {
+    LOGGER.debug("Home endpoint requested...");
     model.addAttribute("games", games);
     return "game";
   }
@@ -49,6 +56,7 @@ public class RpsController {
    */
   @GetMapping("/play")
   public String play(Model model, @ModelAttribute("games") Games games) {
+    LOGGER.debug("Play endpoint requested...");
     playService.play(games);
     model.addAttribute("count", games);
     return "game";
@@ -62,6 +70,7 @@ public class RpsController {
    */
   @GetMapping("/clear")
   public String clear(Model model, @ModelAttribute("games") Games games) {
+    LOGGER.debug("Clear endpoint requested...");
     playService.clear(games);
     model.addAttribute("count", games);
     return "game";
@@ -74,6 +83,7 @@ public class RpsController {
    */
   @GetMapping("/statistics")
   public String statistics(Model model) {
+    LOGGER.debug("statistics endpoint requested...");
     model.addAttribute("statistics", gameStatistics);
     return "statistics";
   }

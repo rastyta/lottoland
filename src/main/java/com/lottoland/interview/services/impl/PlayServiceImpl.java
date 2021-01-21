@@ -1,11 +1,14 @@
 package com.lottoland.interview.services.impl;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import com.lottoland.interview.models.Game;
 import com.lottoland.interview.models.GameResults;
 import com.lottoland.interview.models.Games;
 import com.lottoland.interview.models.Types;
 import com.lottoland.interview.services.GameStatisticsService;
 import com.lottoland.interview.services.PlayService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PlayServiceImpl implements PlayService {
+
+  private static final Logger LOGGER = getLogger(PlayServiceImpl.class);
 
   @Autowired
   private GameStatisticsService gameStatisticsService;
@@ -44,6 +49,7 @@ public class PlayServiceImpl implements PlayService {
         break;
     }
     gameStatisticsService.addNewPlayedGame(player1Wins,player2Wins);
+    LOGGER.debug("New Game performed: "+game.toString());
     games.addGame(game);
   }
 
@@ -52,6 +58,7 @@ public class PlayServiceImpl implements PlayService {
    * @param games Games object model mapped per each user session.
    */
   public void clear(Games games){
+    LOGGER.debug("Clear Games performed...");
     games.clear();
   }
 }

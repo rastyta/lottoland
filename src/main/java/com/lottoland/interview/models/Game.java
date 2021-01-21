@@ -27,4 +27,13 @@ public class Game {
   public void setResult(String result) {
     this.result = result;
   }
+
+  @Override
+  public String toString() {
+    return "Game{" +
+        "player1Type='" + player1Type + '\'' +
+        ", player2Type='" + player2Type + '\'' +
+        ", result='" + result + '\'' +
+        '}';
+  }
 }
